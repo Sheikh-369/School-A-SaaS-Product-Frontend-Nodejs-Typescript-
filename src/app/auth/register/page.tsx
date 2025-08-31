@@ -1,7 +1,7 @@
 function Register(){
     return(
         <>
-<div>
+<div className="min-h-screen flex items-center justify-center bg-black">
   <meta charSet="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Create Account</title>
@@ -10,22 +10,11 @@ function Register(){
   <div className="w-full max-w-[1200px] bg-[#13131a] rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
     {/* Left Section */}
     <div className="w-full md:w-1/2 relative">
-      <a href="#" className="absolute top-6 left-6 text-white text-2xl font-bold z-10">ARK</a>
-      <a href="https://abhirajk.vercel.app/" className="absolute top-6 right-6 bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm hover:bg-white/20 transition-colors z-10">
-        Back to website →
-      </a>
+ 
       <div className="relative h-full">
         <img src="https://res.cloudinary.com/djv4xa6wu/image/upload/v1737831467/abhiraj_tdwxdf.webp" alt="Desert landscape" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-purple-900/30" />
-        <div className="absolute bottom-12 left-12 text-white">
-          <h2 className="text-2xl md:text-4xl font-semibold mb-2">Capturing Moments,</h2>
-          <h2 className="text-2xl md:text-4xl font-semibold">Creating Memories</h2>
-          <div className="flex gap-2 mt-6">
-            <div className="w-4 h-1 bg-white/30 rounded" />
-            <div className="w-4 h-1 bg-white/30 rounded" />
-            <div className="w-4 h-1 bg-white rounded" />
-          </div>
-        </div>
+        
       </div>
     </div>
     {/* Right Section */}
