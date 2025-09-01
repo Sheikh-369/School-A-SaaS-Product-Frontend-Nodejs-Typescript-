@@ -1,4 +1,30 @@
+"use client"
+import { ChangeEvent, FormEvent, useState } from "react"
+interface IRegisterData{
+  userName:string,
+  userEmail:string,
+  userPassword:string
+}
+
+
 function Register(){
+  const [data,setData]=useState<IRegisterData>({
+    userName:"",
+    userEmail:"",
+    userPassword:""
+  })
+
+  const handleRegisterChange=(e:ChangeEvent<HTMLInputElement>)=>{
+    const {name,value}=e.target
+    setData({
+      ...data,
+      [name]:value
+    })
+  }
+
+  const handleRegisterSubmission=(e:FormEvent<HTMLFormElement>)=>{
+    e.preventDefault()
+  }
     return(
         <>
 <div className="min-h-screen flex items-center justify-center bg-black">
@@ -12,7 +38,7 @@ function Register(){
     <div className="w-full md:w-1/2 relative">
  
       <div className="relative h-full">
-        <img src="https://res.cloudinary.com/djv4xa6wu/image/upload/v1737831467/abhiraj_tdwxdf.webp" alt="Desert landscape" className="w-full h-full object-cover" />
+        <img src="https://cdn.pixabay.com/photo/2024/08/23/11/55/building-8991569_1280.jpg" alt="Desert landscape" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-purple-900/30" />
         
       </div>
@@ -25,14 +51,26 @@ function Register(){
           Already have an account?
           <a href="https://abhirajk.vercel.app/" className="text-white hover:underline">Log in</a>
         </p>
-        <form className="space-y-4">
+        <form onSubmit={handleRegisterSubmission} className="space-y-4">
           <div className="flex flex-col md:flex-row gap-4">
-            <input type="text" placeholder="User Name" className="w-full md:w-1/2 bg-[#1c1c24] text-white rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-600" />
+            <input
+            name="userName"
+            type="text"
+            onChange={handleRegisterChange}
+            placeholder="User Name" className="w-full md:w-1/2 bg-[#1c1c24] text-white rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-600" />
             
           </div>
-          <input type="email" placeholder="Email" className="w-full bg-[#1c1c24] text-white rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-600" />
+          <input
+          name="userEmail" 
+          type="email"
+          onChange={handleRegisterChange}
+          placeholder="Email" className="w-full bg-[#1c1c24] text-white rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-600" />
           <div className="relative">
-            <input type="password" placeholder="Enter your password" className="w-full bg-[#1c1c24] text-white rounded-lg p-3 pr-10 focus:outline-none focus:ring-2 focus:ring-purple-600" />
+            <input
+            name="userPassword"
+            type="password" 
+            onChange={handleRegisterChange}
+            placeholder="Enter your password" className="w-full bg-[#1c1c24] text-white rounded-lg p-3 pr-10 focus:outline-none focus:ring-2 focus:ring-purple-600" />
             <button type="button" className="absolute right-3 top-1/2 -translate-y-1/2">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
