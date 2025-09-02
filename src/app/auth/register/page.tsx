@@ -1,6 +1,9 @@
 "use client"
+import { userRegister } from "@/lib/store/auth/authSlice"
+import { useAppDispatch } from "@/lib/store/hooks"
 import { ChangeEvent, FormEvent, useState } from "react"
-interface IRegisterData{
+
+export interface IRegisterData{
   userName:string,
   userEmail:string,
   userPassword:string
@@ -8,6 +11,7 @@ interface IRegisterData{
 
 
 function Register(){
+  const dispatch=useAppDispatch()
   const [data,setData]=useState<IRegisterData>({
     userName:"",
     userEmail:"",
@@ -24,6 +28,7 @@ function Register(){
 
   const handleRegisterSubmission=(e:FormEvent<HTMLFormElement>)=>{
     e.preventDefault()
+    dispatch(userRegister(data))
   }
     return(
         <>
@@ -96,7 +101,6 @@ function Register(){
     </div>
   </div>
 </div>
-
         </>
     )
 }

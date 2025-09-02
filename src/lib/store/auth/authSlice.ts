@@ -1,5 +1,8 @@
+import { IRegisterData } from "@/app/auth/register/page";
 import { Status } from "@/lib/GlobalTypes/types";
+import API from "@/lib/http/API";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { AppDispatch } from "../store";
 
 interface IUserData{
     userName:string,
@@ -36,3 +39,20 @@ const authSlice=createSlice({
 
 const {setUser,setStatus}=authSlice.actions
 export default authSlice.reducer
+
+
+export function userRegister(data:IUserData){
+    return async function userRegisterThunk(dispatch:AppDispatch){
+        try {
+            const response=await API.post("register",data)
+            if(response.status===200){
+                dispatch(setStatus(Status.SUCCESS))
+            }else{
+                dispatch(setStatus(Status.ERROR))
+            }
+        } catch (error) {
+            console.log(error)
+            dispatch(setStatus(Status.ERROR))
+        }
+    }
+}
