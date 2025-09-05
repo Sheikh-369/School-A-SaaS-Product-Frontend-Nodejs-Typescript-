@@ -1,3 +1,5 @@
+import Link from "next/link"
+
 const Navbar=()=>{
     return(
         <>
@@ -21,12 +23,12 @@ const Navbar=()=>{
                     </div>
                     {/* Desktop Button */}
                     <div className="hidden md:flex gap-3.5">
-                    <a href="#" className="bg-white text-indigo-700 px-4 py-2 rounded-xl hover:bg-yellow-300 transition-all font-semibold">
+                    <Link href="/auth/register" className="bg-white text-indigo-700 px-4 py-2 rounded-xl hover:bg-yellow-300 transition-all font-semibold">
                         Register
-                    </a>
-                    <a href="#" className="bg-white text-indigo-700 px-4 py-2 rounded-xl hover:bg-yellow-300 transition-all font-semibold">
+                    </Link>
+                    <Link href="/auth/login" className="bg-white text-indigo-700 px-4 py-2 rounded-xl hover:bg-yellow-300 transition-all font-semibold">
                         Login
-                    </a>
+                    </Link>
                     <a href="#" className="bg-white text-indigo-700 px-4 py-2 rounded-xl hover:bg-yellow-300 transition-all font-semibold">
                         Become School
                     </a>

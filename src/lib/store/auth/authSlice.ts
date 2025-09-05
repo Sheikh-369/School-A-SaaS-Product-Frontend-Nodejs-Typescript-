@@ -3,6 +3,7 @@ import { Status } from "@/lib/GlobalTypes/types";
 import API from "@/lib/http/API";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppDispatch } from "../store";
+import { LoginData } from "@/app/auth/login/page";
 
 interface IUserData{
     userName:string,
@@ -45,6 +46,22 @@ export function userRegister(data:IUserData){
     return async function userRegisterThunk(dispatch:AppDispatch){
         try {
             const response=await API.post("register",data)
+            if(response.status===200){
+                dispatch(setStatus(Status.SUCCESS))
+            }else{
+                dispatch(setStatus(Status.ERROR))
+            }
+        } catch (error) {
+            console.log(error)
+            dispatch(setStatus(Status.ERROR))
+        }
+    }
+}
+
+export function userLogin(loginData:LoginData){
+    return async function userLoginThunk(dispatch:AppDispatch){
+        try {
+            const response=await API.post("login",loginData)
             if(response.status===200){
                 dispatch(setStatus(Status.SUCCESS))
             }else{
